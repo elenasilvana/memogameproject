@@ -59,18 +59,28 @@ class App extends Component {
       estaComparando: true
     });
 
-    setTimeout(()=>{
+    //setTimeout(()=>{
       const [primeraCarta, segundaCarta] = parejaSeleccionada;
       let baraja = this.state.baraja;
 
       if(primeraCarta.icono === segundaCarta.icono){
         baraja = baraja.map((carta) => {
           if(carta.icono !== primeraCarta.icono){
-            console.log(carta, 'soy la carta diferente');
+            console.log(carta, 'adivinaste');
             return carta;
           }
 
           return {...carta, fueAdivinada: true};
+        });
+      }
+      if(primeraCarta.icono !== segundaCarta.icono){
+        baraja = baraja.map((carta) => {
+          if(carta.icono !== primeraCarta.icono){
+            console.log(carta, 'soy la carta diferente');
+            return carta;
+          }
+
+          return {...carta};
         });
       }
 
@@ -79,9 +89,9 @@ class App extends Component {
         baraja,
         estaComparando: false
 
-      }, ()=>{console.log(parejaSeleccionada, baraja)})
+      }, )
 
-    }, 1000)
+    //}, 1000)
   }
 }
 
